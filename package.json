@@ -1,0 +1,26 @@
+{
+  "name": "tvde1logger",
+  "version": "1.0.0",
+  "description": "A nodejs log \"framework\" I use.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tvde1/Tvde1Logger.git"
+  },
+  "keywords": [
+    "node",
+    "log"
+  ],
+  "author": "Tvde1",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tvde1/Tvde1Logger/issues"
+  },
+  "homepage": "https://github.com/Tvde1/Tvde1Logger#readme",
+  "dependencies": {
+    "moment": "^2.19.1"
+  }
+}
