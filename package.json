@@ -1,6 +1,6 @@
 {
   "name": "tvde1logger",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A nodejs log \"framework\" I use.",
   "main": "index.js",
   "scripts": {

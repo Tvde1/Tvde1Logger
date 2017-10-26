@@ -14,7 +14,7 @@ class Logger {
         this._logTime = logTime;
         if (this._name) {
             loggers.set(name, this);
-            for (let logger of loggers.values) {
+            for (let logger of loggers.values()) {
                 logger._updateName();
             }
         }
@@ -29,7 +29,7 @@ class Logger {
             loggers.delete(this._name);
         }
         if (updateNames) {
-            for (let logger of loggers.values) {
+            for (let logger of loggers.values()) {
                 logger._updateName();
             }
         }
