@@ -1,6 +1,7 @@
                 require('colors'); //eslint-disable-line indent
 const moment  = require('moment');
-const loggers = require('./loggerData');
+
+
 
 class Logger {
     
@@ -13,10 +14,8 @@ class Logger {
         this._name = name;
         this._logTime = logTime;
         if (this._name) {
-            loggers.set(name, this);
-            for (let logger of loggers.values()) {
-                logger._updateName();
-            }
+            module.exports.activeLogs.set(this._name, this);
+            this._updateName();
         }
     }
 
@@ -25,11 +24,14 @@ class Logger {
      * @param {boolean} updateNames Whether or not other names should update their padding if they can be smaller.
      */
     destroy(updateNames = true) {
-        if (this._name) { 
-            loggers.delete(this._name);
+        if (this._name) {
+            module.exports.activeLogs.delete(this._name);
         }
+        
         if (updateNames) {
-            for (let logger of loggers.values()) {
+            for (let lgr of Object.getOwnPropertyNames(module.exports.activeLogs)) {
+                const logger = module.exports.activeLogs[lgr];
+
                 logger._updateName();
             }
         }
@@ -39,7 +41,7 @@ class Logger {
      * "Private" function for updating names.
      */
     _updateName() {
-        const longest = Array.from(loggers.keys()).reduce((long, str) => Math.max(long, str.length), 0);
+        const longest = Array.from(module.exports.loggers.keys()).reduce((long, str) => Math.max(long, str.length), 0);
         this._displayName = `${this._name}${' '.repeat(longest - this._name.length)}`;
     }
 
@@ -67,3 +69,5 @@ function getTimeString() {
 }
 
 module.exports = Logger;
+
+module.exports.activeLogs = new Map();
