@@ -49,7 +49,7 @@ class Logger {
      * @param {string} description The description of the log message. Can be null.
      */
     log(title, description) {
-        console.log(`${this._logTime ? getTimeString() : ''}${this._displayName ? `${this.displayName} || ` : ''}${'LOG'.green}   || ${title}${description ? ' | ' + description : ''}`); //eslint-disable-line no-console
+        console.log(`${this._logTime ? getTimeString() : ''}${this._displayName ? `${this._displayName} || ` : ''}${'LOG'.green}   || ${title}${description ? ' | ' + description : ''}`); //eslint-disable-line no-console
     }
 
     /**
