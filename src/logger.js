@@ -1,8 +1,6 @@
                 require('colors'); //eslint-disable-line indent
 const moment  = require('moment');
 
-
-
 class Logger {
     
     /**
@@ -27,7 +25,7 @@ class Logger {
         if (this._name) {
             module.exports.activeLogs.delete(this._name);
         }
-        
+
         if (updateNames) {
             for (let lgr of Object.getOwnPropertyNames(module.exports.activeLogs)) {
                 const logger = module.exports.activeLogs[lgr];
@@ -69,5 +67,4 @@ function getTimeString() {
 }
 
 module.exports = Logger;
-
 module.exports.activeLogs = new Map();
