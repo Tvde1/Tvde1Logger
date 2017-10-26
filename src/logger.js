@@ -39,7 +39,7 @@ class Logger {
      * "Private" function for updating names.
      */
     _updateName() {
-        const longest = loggers.keys().reduce((long, str) => Math.max(long, str.length), 0);
+        const longest = Array.from(loggers.keys()).reduce((long, str) => Math.max(long, str.length), 0);
         this._displayName = `${this._name}${' '.repeat(longest - this._name.length)}`;
     }
 
