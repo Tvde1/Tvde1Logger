@@ -1,6 +1,6 @@
                 require('colors'); //eslint-disable-line indent
 const moment  = require('moment');
-const loggers = new Map();
+const loggers = require('./loggerData');
 
 class Logger {
     
