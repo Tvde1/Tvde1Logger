@@ -1,6 +1,5 @@
                 require('colors'); //eslint-disable-line indent
 const moment  = require('moment');
-const logger  = require('tvde1logger');
 const loggers = new Map();
 
 class Logger {
@@ -15,6 +14,9 @@ class Logger {
         this._logTime = logTime;
         if (this._name) {
             loggers.set(name, this);
+            for (let logger of loggers) {
+                logger._updateName();
+            }
         }
     }
 
