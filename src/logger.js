@@ -14,8 +14,8 @@ class Logger {
         this._logTime = logTime;
         if (this._name) {
             loggers.set(name, this);
-            for (let logger of loggers) {
-                logger.updateName();
+            for (let logger of loggers.values) {
+                logger._updateName();
             }
         }
     }
@@ -29,7 +29,7 @@ class Logger {
             loggers.delete(this._name);
         }
         if (updateNames) {
-            for (let logger of loggers) {
+            for (let logger of loggers.values) {
                 logger._updateName();
             }
         }
@@ -38,7 +38,7 @@ class Logger {
     /**
      * "Private" function for updating names.
      */
-    updateName() {
+    _updateName() {
         const longest = loggers.keys.reduce((long, str) => Math.max(long, str.length), 0);
         this._displayName = `${this._name}${' '.repeat(longest - this._name.length)}`;
     }
