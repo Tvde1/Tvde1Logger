@@ -13,7 +13,7 @@ class Logger {
         this._logTime = logTime;
         if (this._name) {
             module.exports.activeLogs.set(this._name, this);
-            this._updateName();
+            this._updateName(getLongestName());
         }
     }
 
@@ -27,10 +27,8 @@ class Logger {
         }
 
         if (updateNames) {
-            for (let lgr of Object.getOwnPropertyNames(module.exports.activeLogs)) {
-                const logger = module.exports.activeLogs[lgr];
-
-                logger._updateName();
+            for (let logger of module.exports.activeLogs.keys()) {
+                logger._updateName(getLongestName());
             }
         }
     }
@@ -38,8 +36,7 @@ class Logger {
     /**
      * "Private" function for updating names.
      */
-    _updateName() {
-        const longest = Array.from(module.exports.loggers.keys()).reduce((long, str) => Math.max(long, str.length), 0);
+    _updateName(longest) {
         this._displayName = `${this._name}${' '.repeat(longest - this._name.length)}`;
     }
 
@@ -64,6 +61,10 @@ class Logger {
 
 function getTimeString() {
     return `${moment().format('YYYY-MM-DD HH:mm:ss')} || `;
+}
+
+function getLongestName() {
+    return Array.from(module.exports.activeLogs.keys()).reduce((long, str) => Math.max(long, str.length), 0);
 }
 
 module.exports = Logger;
