@@ -1,6 +1,6 @@
 {
   "name": "tvde1logger",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A nodejs log \"framework\" I use.",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Tvde1/Tvde1Logger#readme",
   "dependencies": {
+    "colors": "^1.1.2",
     "moment": "^2.19.1"
   }
 }
